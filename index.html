@@ -7,9 +7,20 @@
 	<title>Candy Broke</title>
 	<style>
 		:root{
-			--normal: 0.5s;
+			--slow: 0.5s;
 			--fast : 0.25s;
 			--logo-color: red;
+			--na-color: #49c0ec;
+			--jeong-color: #a3cc54;
+			--mo-color: #e67ea3;
+			--sa-color: #8c79b4;
+			--ji-color: #f9cc85;
+			--mi-color: #71c7d4;
+			--da-color: #fefefe;
+			--chae-color: #e62722;
+			--tzu-color: #2253a3;
+			--bg-color: linear-gradient(315deg, rgba(255,243,77,1) 34%, rgba(255,70,194,1) 45%);
+
 		}
 		body {
 			margin: 0;
@@ -25,7 +36,15 @@
 			width: 90%;
 			aspect-ratio: 1 / 1;
 			border-radius: 50%;
-			background: linear-gradient(180deg, rgba(255,243,77,1) 34%, rgba(255,70,194,1) 45%);
+			background: var(--bg-color);
+			
+		}
+
+		.lightstick.slow {
+			animation: animate var(--slow) linear infinite;
+		}
+
+		.lightstick.fast {
 			animation: animate var(--fast) linear infinite;
 		}
 
@@ -44,7 +63,7 @@
 			width: 100%;
 			height: 100%;
 			border-radius: 50%;
-			background: linear-gradient(180deg, rgba(255,243,77,1) 34%, rgba(255,70,194,1) 45%);
+			background: var(--bg-color);
 		}
 		.lightstick span:nth-child(1) {
 			filter: blur(5px);
@@ -69,41 +88,272 @@
 			justify-content: center;
 		}
 		.logo {
+			display: flex;
 			position: absolute;
-			animation: blinker var(--fast) step-start infinite;
+			justify-content: center;
+			align-items: center;
+			
 		}
-		.logo #blur1 {
-			filter: blur(50px);
+		.logo.slow {
+			animation: blinker var(--slow) step-start infinite;
+		}
+
+		.logo.fast {
+			animation: blinker var(--fast) step-start infinite;
 		}
 		@keyframes blinker {
 			50% {
 				opacity: 0;
 			}	
 		}
+		#setting-btn {
+			bottom: 50px;
+			position: absolute;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			opacity: 0.5;
+		}
+		.popup {
+			visibility: hidden;
+			height: 50%;
+			width: 80%;
+			background: rgb(44, 41, 41);
+			position: absolute;
+			border-radius: 5%;
+			display: flex;
+			justify-content: space-evenly;
+			align-content: space-evenly;
+			flex-wrap: wrap;
+		}
 
+		.popup.show {
+			visibility: visible;
+		}
+
+		.popup div {
+			display: flex;
+			position: relative;
+			background: yellow;
+			width: 30%;
+			aspect-ratio: 1 / 1;
+			justify-content: center;
+			align-items: center;
+			border-radius: 50%;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			font-weight: bold;
+		}
+
+		#staticbtn {
+			background: linear-gradient(315deg, rgba(255,243,77,1) 34%, rgba(255,70,194,1) 45%);
+		}
+
+		#slowbtn {
+			background: linear-gradient(315deg, rgba(255,243,77,1) 34%, rgba(255,70,194,1) 45%);
+		}
+
+		#fastbtn {
+			background: linear-gradient(315deg, rgba(255,243,77,1) 34%, rgba(255,70,194,1) 45%);
+		}
+
+		#na {
+			background: var(--na-color);
+		}
+		
+		#jeong {
+			background: var(--jeong-color);
+		}
+
+		#mo {
+			background: var(--mo-color);
+		}
+
+		#sa {
+			background: var(--sa-color);
+		}
+
+		#ji {
+			background: var(--ji-color);
+		}
+
+		#mi {
+			background: var(--mi-color);
+		}
+
+		#da {
+			background: var(--da-color);
+		}
+
+		#chae {
+			background: var(--chae-color);
+		}
+
+		#tzu {
+			background: var(--tzu-color);
+		}
 	</style>
 </head>
 <body>
-	<div class="lightstick">
+	<div class="lightstick" id="lightstick">
 		<span></span>
 		<span></span>
 		<span></span>
 		<span></span>
 	</div>
 	<div class="black-circle">
-		<svg class="logo" xmlns="http://www.w3.org/2000/svg" width="45%" height="45%" viewBox="0 0 950 900">
+		<div class="logo" id="twice">
+		<svg xmlns="http://www.w3.org/2000/svg" width="45%" height="45%" viewBox="0 0 950 900">
   		<defs>
     		<style>
       		.cls-1 {
         		fill-rule: evenodd;
 						fill: var(--logo-color);
-						filter: blur(3px);
+						filter: blur(2px);
       		}
     		</style>
   		</defs>
   		<path class="cls-1" d="M738,47s10.339,149.2-70.721,203.214C588.536,309,467,291,467,291S372.567,456.635,351,607c-10.166,71.638,11.706,113.718,51,128,30.108,11.773,53-21,53-21s-34.682-62.834-34-109c-2.311-75.9,35.055-145.793,119-137,26.444,7.084,44.226,23.8,53,49,12.564,36.082,3.33,74.889-7.512,102.925C570.505,654.774,522,713,522,713s12.113,16.637,43,16c59.479-1.227,122.081-88.712,117-187-5.369-45.105-12.105-84.475-43-113-9.426-12.953-10.663-28.123,4-42,25.64-30.032,57.7-26.919,70.823-20.939C732.648,373.957,740.507,394.3,761,413c5.982,4.7,13.715,4.4,20,1,5.333-3.333,5.667-8.167,5-14-2.5-7.5-10.35-13.779-20-19,14.336-16.882,33.167-19.02,52-6,13.024,8.72,16.863,33.9,12,51-7.205,22.774-23.85,39.428-56,51,3.734,65.425-17.6,163.479-71,238-29.029,40.507-68.309,73.917-124,78-59,2.5-87.333-32.5-99-43-45.051,42.97-106.866,56.472-154,30-59.827-30.019-79-85-79-161,0-89.5,65-305.467,72-334C177.206,271.753,91.317,328.176,84,419c-4.7,51.323,18.5,85.5,37,97,22.5,20.5,38.323,18.945,54,23-31.663,25.331-93,77-93,77s-33.753-9.9-49-30C8.743,552.6,5.287,524.227,10,483,31.918,378.6,49.112,353.241,114,287c66.923-60.483,122.448-93.346,214-115,72.074-11.1,147.594-17.817,215-31C709.034,112.477,738,47,738,47ZM506,548c-29.709,16.76-22.652,74.525-11,106,20.035-13.258,54.359-79.81,26-105Z"/>
 		</svg>
+		</div>
 	</div>
+	<span id="setting-btn">
+		<svg height="100%" width="100%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 30.143 30.143" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-whiteidth="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path style="fill:white;" d="M20.034,2.357v3.824c3.482,1.798,5.869,5.427,5.869,9.619c0,5.98-4.848,10.83-10.828,10.83 c-5.982,0-10.832-4.85-10.832-10.83c0-3.844,2.012-7.215,5.029-9.136V2.689C4.245,4.918,0.731,9.945,0.731,15.801 c0,7.921,6.42,14.342,14.34,14.342c7.924,0,14.342-6.421,14.342-14.342C29.412,9.624,25.501,4.379,20.034,2.357z"></path> <path style="fill:white;" d="M14.795,17.652c1.576,0,1.736-0.931,1.736-2.076V2.08c0-1.148-0.16-2.08-1.736-2.08 c-1.57,0-1.732,0.932-1.732,2.08v13.496C13.062,16.722,13.225,17.652,14.795,17.652z"></path> </g> </g></svg>
+	</span>
+	<div class="popup" id="popup">
+		
+		<div id="staticbtn">Static</div>
+		<div id="slowbtn">Slow</div>
+		<div id="fastbtn">Fast</div>
+
+		<div id="na">Na</div>
+		<div id="jeong">Jeong</div>
+		<div id="mo">Mo</div>
+
+
+		<div id="sa">Sa</div>
+		<div id="ji">Ji</div>
+		<div id="mi">Mi</div>
+
+
+		<div id="da">Da</div>
+		<div id="chae">Chae</div>
+		<div id="tzu">Tzu</div>
+
+	</div>
+	<script>
+		let settingBtn = document.getElementById("setting-btn");
+		settingBtn.addEventListener("touchstart", () => {
+			document.getElementById("popup").classList.toggle("show");
+		})
+		let staticBtn = document.getElementById("staticbtn");
+		staticBtn.addEventListener("touchstart", () => {
+			document.getElementById("popup").classList.toggle("show");
+			document.getElementById("lightstick").className = "lightstick";
+			document.getElementById("twice").className = "logo";
+			document.querySelector(':root').style.setProperty('--bg-color', "linear-gradient(315deg, rgba(255,243,77,1) 34%, rgba(255,70,194,1) 45%)");
+			document.querySelector(':root').style.setProperty('--logo-color', "red");
+		})
+
+		let slowBtn = document.getElementById("slowbtn");
+		slowBtn.addEventListener("touchstart", () => {
+			document.getElementById("popup").classList.toggle("show");
+			document.getElementById("lightstick").className = "lightstick slow";
+			document.getElementById("twice").className = "logo slow"
+			document.querySelector(':root').style.setProperty('--bg-color', "linear-gradient(315deg, rgba(255,243,77,1) 34%, rgba(255,70,194,1) 45%)");
+			document.querySelector(':root').style.setProperty('--logo-color', "red");
+		})
+
+		let fastBtn = document.getElementById("fastbtn");
+		fastBtn.addEventListener("touchstart", () => {
+			document.getElementById("popup").classList.toggle("show");
+			document.getElementById("lightstick").className = "lightstick fast";
+			document.getElementById("twice").className = "logo fast"
+			document.querySelector(':root').style.setProperty('--bg-color', "linear-gradient(315deg, rgba(255,243,77,1) 34%, rgba(255,70,194,1) 45%)");
+			document.querySelector(':root').style.setProperty('--logo-color', "red");
+		})
+
+		let na = document.getElementById("na");
+		na.addEventListener("touchstart", () => {
+			document.getElementById("popup").classList.toggle("show");
+			document.getElementById("lightstick").className = "lightstick";
+			document.getElementById("twice").className = "logo"
+			document.querySelector(':root').style.setProperty('--bg-color', "#49c0ec");
+			document.querySelector(':root').style.setProperty('--logo-color', "#49c0ec");
+		})
+
+		let jeong = document.getElementById("jeong");
+		jeong.addEventListener("touchstart", () => {
+			document.getElementById("popup").classList.toggle("show");
+			document.getElementById("lightstick").className = "lightstick";
+			document.getElementById("twice").className = "logo"
+			document.querySelector(':root').style.setProperty('--bg-color', "#a3cc54");
+			document.querySelector(':root').style.setProperty('--logo-color', "#a3cc54");
+		})
+
+		let mo = document.getElementById("mo");
+		mo.addEventListener("touchstart", () => {
+			document.getElementById("popup").classList.toggle("show");
+			document.getElementById("lightstick").className = "lightstick";
+			document.getElementById("twice").className = "logo"
+			document.querySelector(':root').style.setProperty('--bg-color', "#e67ea3");
+			document.querySelector(':root').style.setProperty('--logo-color', "#e67ea3");
+		})
+
+		let sa = document.getElementById("sa");
+		sa.addEventListener("touchstart", () => {
+			document.getElementById("popup").classList.toggle("show");
+			document.getElementById("lightstick").className = "lightstick";
+			document.getElementById("twice").className = "logo"
+			document.querySelector(':root').style.setProperty('--bg-color', "#8c79b4");
+			document.querySelector(':root').style.setProperty('--logo-color', "#8c79b4");
+		})
+
+		let ji = document.getElementById("ji");
+		ji.addEventListener("touchstart", () => {
+			document.getElementById("popup").classList.toggle("show");
+			document.getElementById("lightstick").className = "lightstick";
+			document.getElementById("twice").className = "logo"
+			document.querySelector(':root').style.setProperty('--bg-color', "#f9cc85");
+			document.querySelector(':root').style.setProperty('--logo-color', "#f9cc85");
+		})
+
+		let mi = document.getElementById("mi");
+		mi.addEventListener("touchstart", () => {
+			document.getElementById("popup").classList.toggle("show");
+			document.getElementById("lightstick").className = "lightstick";
+			document.getElementById("twice").className = "logo"
+			document.querySelector(':root').style.setProperty('--bg-color', "#71c7d4");
+			document.querySelector(':root').style.setProperty('--logo-color', "#71c7d4");
+		})
+
+		let da = document.getElementById("da");
+		da.addEventListener("touchstart", () => {
+			document.getElementById("popup").classList.toggle("show");
+			document.getElementById("lightstick").className = "lightstick";
+			document.getElementById("twice").className = "logo"
+			document.querySelector(':root').style.setProperty('--bg-color', "#fefefe");
+			document.querySelector(':root').style.setProperty('--logo-color', "#fefefe");
+		})
+
+		let chae = document.getElementById("chae");
+		chae.addEventListener("touchstart", () => {
+			document.getElementById("popup").classList.toggle("show");
+			document.getElementById("lightstick").className = "lightstick";
+			document.getElementById("twice").className = "logo"
+			document.querySelector(':root').style.setProperty('--bg-color', "#e62722");
+			document.querySelector(':root').style.setProperty('--logo-color', "#e62722");
+		})
+
+		let tzu = document.getElementById("tzu");
+		tzu.addEventListener("touchstart", () => {
+			document.getElementById("popup").classList.toggle("show");
+			document.getElementById("lightstick").className = "lightstick";
+			document.getElementById("twice").className = "logo"
+			document.querySelector(':root').style.setProperty('--bg-color', "#2253a3");
+			document.querySelector(':root').style.setProperty('--logo-color', "#2253a3");
+		})
+
+	</script>
 </body>
 </html>
 
