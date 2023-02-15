@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Candy Broke</title>
+	<style>
+		:root{
+			--normal: 0.5s;
+			--fast : 0.25s;
+			--logo-color: red;
+		}
+		body {
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background: black;
+		}
+		.lightstick {
+			position: relative;
+			width: 90%;
+			aspect-ratio: 1 / 1;
+			border-radius: 50%;
+			background: linear-gradient(180deg, rgba(255,243,77,1) 34%, rgba(255,70,194,1) 45%);
+			animation: animate var(--fast) linear infinite;
+		}
+
+		@keyframes animate 
+		{
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(-359deg);
+			}
+		}
+
+		.lightstick span {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			background: linear-gradient(180deg, rgba(255,243,77,1) 34%, rgba(255,70,194,1) 45%);
+		}
+		.lightstick span:nth-child(1) {
+			filter: blur(5px);
+		}
+		.lightstick span:nth-child(2) {
+			filter: blur(10px);
+		}
+		.lightstick span:nth-child(3) {
+			filter: blur(25px);
+		}
+		.lightstick span:nth-child(4) {
+			filter: blur(50px);
+		}
+		.black-circle {
+			display: flex;
+			position: absolute;
+			width: 70%;
+			aspect-ratio: 1 / 1;
+			background: black;
+			border-radius: 50%;
+			align-items: center;
+			justify-content: center;
+		}
+		.logo {
+			position: absolute;
+			animation: blinker var(--fast) step-start infinite;
+		}
+		.logo #blur1 {
+			filter: blur(50px);
+		}
+		@keyframes blinker {
+			50% {
+				opacity: 0;
+			}	
+		}
+
+	</style>
+</head>
+<body>
+	<div class="lightstick">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+	<div class="black-circle">
+		<svg class="logo" xmlns="http://www.w3.org/2000/svg" width="45%" height="45%" viewBox="0 0 950 900">
+  		<defs>
+    		<style>
+      		.cls-1 {
+        		fill-rule: evenodd;
+						fill: var(--logo-color);
+						filter: blur(15px);
+      		}
+    		</style>
+  		</defs>
+  		<path class="cls-1" d="M738,47s10.339,149.2-70.721,203.214C588.536,309,467,291,467,291S372.567,456.635,351,607c-10.166,71.638,11.706,113.718,51,128,30.108,11.773,53-21,53-21s-34.682-62.834-34-109c-2.311-75.9,35.055-145.793,119-137,26.444,7.084,44.226,23.8,53,49,12.564,36.082,3.33,74.889-7.512,102.925C570.505,654.774,522,713,522,713s12.113,16.637,43,16c59.479-1.227,122.081-88.712,117-187-5.369-45.105-12.105-84.475-43-113-9.426-12.953-10.663-28.123,4-42,25.64-30.032,57.7-26.919,70.823-20.939C732.648,373.957,740.507,394.3,761,413c5.982,4.7,13.715,4.4,20,1,5.333-3.333,5.667-8.167,5-14-2.5-7.5-10.35-13.779-20-19,14.336-16.882,33.167-19.02,52-6,13.024,8.72,16.863,33.9,12,51-7.205,22.774-23.85,39.428-56,51,3.734,65.425-17.6,163.479-71,238-29.029,40.507-68.309,73.917-124,78-59,2.5-87.333-32.5-99-43-45.051,42.97-106.866,56.472-154,30-59.827-30.019-79-85-79-161,0-89.5,65-305.467,72-334C177.206,271.753,91.317,328.176,84,419c-4.7,51.323,18.5,85.5,37,97,22.5,20.5,38.323,18.945,54,23-31.663,25.331-93,77-93,77s-33.753-9.9-49-30C8.743,552.6,5.287,524.227,10,483,31.918,378.6,49.112,353.241,114,287c66.923-60.483,122.448-93.346,214-115,72.074-11.1,147.594-17.817,215-31C709.034,112.477,738,47,738,47ZM506,548c-29.709,16.76-22.652,74.525-11,106,20.035-13.258,54.359-79.81,26-105Z"/>
+		</svg>
+	</div>
+</body>
+</html>
+
+
+<!-- original color
+linear-gradient(180deg, rgba(252,200,155,1) 34%, rgba(255,95,162,1) 45%) -->
