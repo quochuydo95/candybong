@@ -1,4 +1,4 @@
-# quochuydo95.github.io
+# CANDY Broke - A Candy Bong Z for Broke Onces
 
 A web version of Candy Bong Z - Twice's lightstick
 
